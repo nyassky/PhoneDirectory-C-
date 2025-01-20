@@ -92,13 +92,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PhoneDirectoryForm.cpp" />
+    <ClCompile Include="Validator.cpp" />
     <QtRcc Include="PhoneDirectoryQt.qrc" />
     <QtUic Include="PhoneDirectoryQt.ui" />
     <QtMoc Include="PhoneDirectoryQt.h" />
-    <ClCompile Include="..\..\PhoneDirectory\PhoneDirectory\Contact.cpp" />
     <ClCompile Include="..\..\PhoneDirectory\PhoneDirectory\main.cpp" />
     <ClCompile Include="..\..\PhoneDirectory\PhoneDirectory\Phonebook.cpp" />
     <ClCompile Include="PhoneDirectoryQt.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Contact.h" />
+    <ClInclude Include="Phonebook.h" />
+    <QtMoc Include="PhoneDirectoryForm.h" />
+    <ClInclude Include="Validator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
