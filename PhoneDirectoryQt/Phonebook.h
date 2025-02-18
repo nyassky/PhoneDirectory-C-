@@ -3,13 +3,17 @@
 
 #include <vector>
 #include <string>
-#include "Contact.h" 
+#include "Contact.h"
+#include "PhonebookDatabase.h"
 using namespace std;
 class Phonebook {
     vector<Contact> contacts;
     int next_id = 1;
+    PhonebookDatabase db;
 
 public:
+    Phonebook();
+
     void addContact(const Contact& contact);
     void removeContact(int id);
     void listContacts() const;
@@ -21,6 +25,8 @@ public:
     vector<Contact> searchContacts(const string& query);
     const vector<Contact>& getContacts() const;
     vector<Contact>& getContacts();
+
+   
 };
 
 #endif // PHONEBOOK_H

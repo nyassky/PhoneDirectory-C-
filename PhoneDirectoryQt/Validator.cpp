@@ -21,15 +21,20 @@ bool Validator::validateName(const string& name) {
     return regex_match(trimmed_name, name_regex);
 }
 
-
 bool Validator::validatePhone(const string& phone) {
-    regex phone_regex(R"(^\+?7\d{10}$|^8\d{10}$)");
+    regex phone_regex(R"(^(\+7|8)\s?\(?\d{3}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$)");
     return regex_match(phone, phone_regex);
 }
 
+
 bool Validator::validateEmail(const string& email) {
+    // Убираем пробелы из строки
+    string trimmed_email = email;
+    trimmed_email.erase(remove(trimmed_email.begin(), trimmed_email.end(), ' '), trimmed_email.end());
+
+    // Проверяем по регулярному выражению
     regex email_regex(R"(^[A-Za-z0-9](\.?[A-Za-z0-9_-])*@[A-Za-z0-9-]+(\.[A-Za-z]{2,})+$)");
-    return regex_match(email, email_regex);
+    return regex_match(trimmed_email, email_regex);
 }
 
 bool Validator::validateDate(const string& date) {
@@ -46,6 +51,9 @@ bool Validator::validateDate(const string& date) {
     date_stream >> day >> delim1 >> month >> delim2 >> year;
 
     if (delim1 != '-' || delim2 != '-') {
+        return false;
+    }
+    if (year > 2025) {
         return false;
     }
 

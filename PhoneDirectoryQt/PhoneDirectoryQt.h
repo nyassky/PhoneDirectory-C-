@@ -4,12 +4,16 @@
 #include <QTextStream>
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QHeaderView>
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QGridLayout>
+#include <QGroupBox>
 #include <QString> 
 #include <QtWidgets/QMainWindow>
 #include "ui_PhoneDirectoryQt.h"
@@ -32,10 +36,16 @@ private slots:
     void searchContact();
     void saveToFile();     // Новый слот
     void loadFromFile();   // Новый слот
-
+    void addContactDB();  // DB
+    void updateContactTable();  // DB
+    void searchContactDB();  // DB
+    void deleteContactDB(); //DB
+    void sortContactDB(); //DB
+    void editContactDB(); //DB
 private:
     QTableWidget* contactTable;
     Phonebook phonebook;   // Хранение контактов
+    PhonebookDatabase phonebookDatabase;
 };
 
 
